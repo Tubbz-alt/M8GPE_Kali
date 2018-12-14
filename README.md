@@ -1,4 +1,4 @@
-# Kali Nethunter for the HTC One M8 GPE.
+# Kali Nethunter for the HTC One M8 GPE (WIP).
 ![Kali NetHunter](https://raw.githubusercontent.com/offensive-security/kali-nethunter/master/images/nethunter-git-logo.png)
 HTC One M8, with magic.
 
