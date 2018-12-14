@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEV_BOARD="m8"
+DEV_BOARD="htc_m8"
 DEV_DESC="HTC One M8 GPE"
 DEV_ARCH="armhf"
 DEV_BLOCK="/dev/block/platform/msm_sdcc.1/by-name/boot"
