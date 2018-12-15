@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEV_BOARD="htc_m8"
+DEV_BOARD="htc_m8 m8"
 DEV_DESC="HTC One M8 GPE"
 DEV_ARCH="armhf"
 DEV_BLOCK="/dev/block/platform/msm_sdcc.1/by-name/boot"
@@ -51,8 +51,8 @@ if [[ ${OS} != *"Debian"* ]] || [[ ${OS} != *"Ubuntu"* ]]; then
     if [[ ${OS} = *"Manjaro"* ]] || [[ ${OS} != *"Arch"* ]]; then
         if ! (pacman -Qi aosp-devel); then
             echo "[CONFIGURE] Installing dependencies..."
-            yaourt -Syy
-            yaourt -S aosp-devel python-virtualenv python2-virtualenv
+            yay -Syy
+            yay -S aosp-devel python-virtualenv python2-virtualenv
         fi
         echo "[CONFIGURE] Enabling Python virtual environment..."
         virtualenv2 -p $(which python2) --system-site-packages $(pwd)
