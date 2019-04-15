@@ -51,8 +51,14 @@ if [[ ${OS} != *"Debian"* ]] || [[ ${OS} != *"Ubuntu"* ]]; then
     if [[ ${OS} = *"Manjaro"* ]] || [[ ${OS} != *"Arch"* ]]; then
         if ! (pacman -Qi aosp-devel); then
             echo "[CONFIGURE] Installing dependencies..."
+            sudo pacman -S --needed yay
             yay -Syy
-            yay -S aosp-devel python-virtualenv python2-virtualenv
+            yay -S aosp-devel
+        fi
+        if ! (pacman -Qi python2-requests); then
+            sudo pacman -S --needed yay
+            yay -Syy
+            yay -S python-virtualenv python2-virtualenv python-requests python2-requests
         fi
         echo "[CONFIGURE] Enabling Python virtual environment..."
         virtualenv2 -p $(which python2) --system-site-packages $(pwd)
