@@ -4,7 +4,7 @@ HTC One M8, with magic.
 
 It's a completely stock kernel but it has already had the 802.11 patch applied and has had its configuration changed so that it loads drivers for the Atheros and Realtek WiFi chipsets. It also has RTL SDR, external Bluetooth and Ethernet drivers - basically the things you'd expect.
 
-A working keyboard gadget patch has also been applied, thanks to @binkybear and @tjado
+A working keyboard gadget patch has also been applied, thanks to @binkybear and @tjado, as well as mass-storage/CDROM patches, RAW frame injection and a fix for the DirtyCOW exploit.
 
 # Kernel sources.
 
