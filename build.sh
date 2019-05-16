@@ -47,30 +47,27 @@ fi
 
 echo $OS
 
-if [[ ${OS} != *"Debian"* ]] || [[ ${OS} != *"Ubuntu"* ]]; then
-    if [[ ${OS} = *"Manjaro"* ]] || [[ ${OS} != *"Arch"* ]]; then
-        if ! (pacman -Qi aosp-devel); then
-            echo "[CONFIGURE] Installing dependencies..."
-            sudo pacman -S --needed yay
-            yay -Syy
-            yay -S aosp-devel
-        fi
-        if ! (pacman -Qi python2-requests); then
-            sudo pacman -S --needed yay
-            yay -Syy
-            yay -S python-virtualenv python2-virtualenv python-requests python2-requests
-        fi
-        echo "[CONFIGURE] Enabling Python virtual environment..."
-        virtualenv2 -p $(which python2) --system-site-packages $(pwd)
-        #virtualenv -p $(which python2) --system-site-packages $(pwd)
-        source $(pwd)/bin/activate
-    else
-        echo "Not an officially supported distro. Skipping dependencies install..."
+if [[ ${OS} = *"Manjaro"* ]] || [[ ${OS} != *"Arch"* ]]; then
+    if ! (pacman -Qi aosp-devel); then
+        echo "[CONFIGURE] Installing dependencies..."
+        sudo pacman -S --needed yay
+        yay -Syy
+        yay -S aosp-devel
     fi
-else
+    if ! (pacman -Qi python2-requests); then
+        sudo pacman -S --needed yay
+        yay -Syy
+        yay -S python-virtualenv python2-virtualenv python-requests python2-requests
+    fi
+    echo "[CONFIGURE] Enabling Python virtual environment..."
+    virtualenv2 -p $(which python2) --system-site-packages $(pwd)
+    #virtualenv -p $(which python2) --system-site-packages $(pwd)
+    source $(pwd)/bin/activate
+fi
+if [[ ${OS} != *"Debian"* ]] || [[ ${OS} != *"Ubuntu"* ]]; then
     echo "[CONFIGURE] Installing dependencies..."
     sudo apt-get update
-    sudo apt-get install build-essential git wget curl libncurses-dev python-requests -y
+    sudo apt-get install build-essential git wget curl libncurses-dev python-requests python-venv -y
 fi
 
 if NPROC=$(nproc); then
@@ -106,7 +103,7 @@ if [[ ! -d "./kernel" ]]; then
 fi
 
 echo "[CONFIGURE] Downloading Kali Nethunter..."
-git clone https://github.com/offensive-security/kali-nethunter
+git clone https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-project kali-nethunter
 cd kali-nethunter
 git pull origin master
 cd ..
