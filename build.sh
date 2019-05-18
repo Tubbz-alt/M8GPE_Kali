@@ -47,7 +47,7 @@ fi
 
 echo $OS
 
-if [[ ${OS} = *"Manjaro"* ]] || [[ ${OS} != *"Arch"* ]]; then
+if [[ ${OS} = *"Manjaro"* ]] || [[ ${OS} = *"Arch"* ]]; then
     if ! (pacman -Qi aosp-devel); then
         echo "[CONFIGURE] Installing dependencies..."
         sudo pacman -S --needed yay
@@ -64,7 +64,7 @@ if [[ ${OS} = *"Manjaro"* ]] || [[ ${OS} != *"Arch"* ]]; then
     #virtualenv -p $(which python2) --system-site-packages $(pwd)
     source $(pwd)/bin/activate
 fi
-if [[ ${OS} != *"Debian"* ]] || [[ ${OS} != *"Ubuntu"* ]]; then
+if [[ ${OS} = *"Debian"* ]] || [[ ${OS} = *"Ubuntu"* ]]; then
     echo "[CONFIGURE] Installing dependencies..."
     sudo apt-get update
     sudo apt-get install build-essential git wget curl libncurses-dev python-requests python-venv -y
